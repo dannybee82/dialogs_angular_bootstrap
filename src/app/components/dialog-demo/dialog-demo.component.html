@@ -1,0 +1,81 @@
+<div class="container-fluid">
+    <div class="container p-2 float-start">
+        <form [formGroup]="this.dialogForm" (ngSubmit)="submit()">
+            <div class="row">
+                <div class="col-3 fw-bold">
+                    <label>Dialog Type</label>
+                </div>
+                <div class="col-auto">
+                    <select class="form-select" formControlName="dialogType">
+                        @for(option of this.allDialogTypes; track $index) {
+                            <option [value]="option">{{ option }}</option>
+                        }
+                    </select>
+                </div>            
+            </div>
+            <div class="row mt-1">
+                <div class="col-3 fw-bold">
+                    <label>Title</label>
+                </div>
+                <div class="col-auto">
+                    <input type="text" class="form-control" formControlName="dialogTitle">
+                </div>            
+            </div>
+            <div class="row mt-1">
+                <div class="col-3 fw-bold">
+                    <label>Message</label>
+                </div>
+                <div class="col-auto">
+                    <input type="text" class="form-control" formControlName="dialogMessage">
+                </div>            
+            </div>
+            <div class="row mt-1">
+                <div class="col-3 fw-bold">
+                    <label>Additional Text (optional)</label>
+                </div>
+                <div class="col-auto">
+                    <input type="text" class="form-control" formControlName="dialogAdditionalText">
+                </div>            
+            </div>
+            <div class="row mt-1">
+                <div class="col-3 fw-bold">
+                    <label>Cancellation Text</label>
+                </div>
+                <div class="col-auto">
+                    <input type="text" class="form-control" formControlName="dialogCancellationText">
+                </div>            
+            </div>
+            <div class="row mt-1">
+                <div class="col-3 fw-bold">
+                    <label>Confirmation Text</label>
+                </div>
+                <div class="col-auto">
+                    <input type="text" class="form-control" formControlName="dialogConfirmationText">
+                </div>            
+            </div>
+            <div class="row mt-1">
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-arrow-right-short"></i>
+                        <span class="ms=1">Show Dialog</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    @if(this.showDialogResult()) {
+        <div class="container p-1 float-start">
+            <div class="row mt-1">
+                <div class="col-auto">
+                    Returned value from Dialog: <strong>{{ this.currentReturnedValue() }}</strong>
+                </div>
+            </div>
+        </div>
+    }
+
+    @if(this.isDialogVisible()) {
+        <app-bootstrap-dialog [dialog]="this.dialogData" (getConfirmation)="this.callback($event)"></app-bootstrap-dialog>
+    }
+
+</div>

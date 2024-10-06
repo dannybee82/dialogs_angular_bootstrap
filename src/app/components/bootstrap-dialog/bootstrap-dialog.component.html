@@ -1,0 +1,57 @@
+@if(this.dialog()) {
+  <div class="container-fluid modal d-flex justify-content-center" (click)="this.closeDialog()">
+    <div class="container contents rounded p-3" (click)="$event.stopPropagation()">
+      <div class="row">    
+        @if(this.getType().NONE != this.dialog()?.dialogType) {
+          <div class="col-auto">
+            @switch (this.dialog()?.dialogType) {
+              @case (this.getType().INFO) {
+                <i class="bi bi-info-circle-fill text-primary fs-3"></i>
+              }
+              @case(this.getType().QUESTION) {
+                <i class="bi bi-question-circle-fill text-primary fs-3"></i>
+              }
+              @case(this.getType().WARNING) {
+                <i class="bi bi-exclamation-triangle-fill text-warning fs-3"></i>
+              }
+              @case(this.getType().ERROR) {
+                <i class="bi bi-x-circle-fill text-danger fs-3"></i>
+              }
+            }
+          </div>
+        }      
+        <div class="col-auto">
+          <h3>{{ this.dialog()?.dialogTitle }}</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-auto">
+          {{ this.dialog()?.dialogMessage }}
+        </div>
+      </div>
+      @if( this.dialog()?.dialogAdditionalText ) {
+        <div class="row">
+          <div class="col-auto">
+            {{ this.dialog()?.dialogAdditionalText }}
+          </div>
+        </div>
+      }
+      <div class="row mt-2">
+        @if(this.dialog()?.dialogCancellationText !== '') {
+          <div class="col-4">
+            <button type="button" class="btn btn-danger" (click)="this.cancel()">
+              <i class="bi bi-x-circle"></i>
+              <span class="ms-1">{{ this.dialog()?.dialogCancellationText }}</span>
+            </button>
+          </div>
+        }
+        <div class="col-4">
+          <button type="button" class="btn btn-success" (click)="this.ok()">
+            <i class="bi bi-check2"></i>
+            <span class="ms-1">{{ this.dialog()?.dialogConfirmationText }}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+}
