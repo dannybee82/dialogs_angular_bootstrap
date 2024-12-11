@@ -1,6 +1,6 @@
-# Dialogs Angular 18 + Bootstrap 5
+# Dialogs Angular 19 + Bootstrap 5
 
-\- Angular 18 application + Bootstrap 5.
+\- Angular 19 application + Bootstrap 5.
 
 \- Create dialogs from form.
 
