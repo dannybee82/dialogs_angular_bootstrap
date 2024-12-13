@@ -6,7 +6,6 @@ import { DialogType } from '../../enums/dialog-type.enum';
 
 @Component({
   selector: 'app-dialog-demo',
-  standalone: true,
   imports: [
     FormsModule,
     ReactiveFormsModule,
