@@ -16,14 +16,14 @@ import { DialogType } from '../../enums/dialog-type.enum';
 })
 export class DialogDemoComponent implements OnInit {
 
-  isDialogVisible: WritableSignal<boolean> = signal(false);  
-  showDialogResult: WritableSignal<boolean> = signal(false);
-  currentReturnedValue: WritableSignal<boolean> = signal(false);
-  dialogData: Dialog | null = null;
+  protected isDialogVisible: WritableSignal<boolean> = signal(false);
+  protected showDialogResult: WritableSignal<boolean> = signal(false);
+  protected currentReturnedValue: WritableSignal<boolean> = signal(false);
+  protected dialogData: WritableSignal<Dialog | null> = signal(null);
   
-  dialogForm: UntypedFormGroup = new FormGroup({});
+  protected dialogForm: UntypedFormGroup = new FormGroup({});
 
-  allDialogTypes: DialogType[] = [DialogType.NONE, DialogType.INFO, DialogType.QUESTION, DialogType.WARNING, DialogType.ERROR];
+  protected allDialogTypes: DialogType[] = [DialogType.NONE, DialogType.INFO, DialogType.QUESTION, DialogType.WARNING, DialogType.ERROR];
 
   private fb = inject(FormBuilder);
 
@@ -49,13 +49,8 @@ export class DialogDemoComponent implements OnInit {
   submit(): void {
     if(this.dialogForm.valid) {
       this.showDialogResult.set(false);
-
-      this.dialogData = Object.assign(this.dialogForm.value);
-
-      console.log(this.dialogData);
-
+      this.dialogData.set(Object.assign(this.dialogForm.value));
       this.isDialogVisible.set(true);
-
     } else {
       this.dialogForm.markAllAsTouched();
     }

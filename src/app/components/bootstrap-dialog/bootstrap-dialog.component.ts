@@ -9,9 +9,9 @@ import { Dialog } from '../../interfaces/dialog.interface';
 })
 export class BootstrapDialogComponent {
 
-  dialog: InputSignal<Dialog | null> = input<Dialog | null>(null);
+  readonly dialog: InputSignal<Dialog | null> = input<Dialog | null>(null);
 
-  getConfirmation: OutputEmitterRef<boolean> = output<boolean>()
+  readonly getConfirmation: OutputEmitterRef<boolean> = output<boolean>()
 
   closeDialog() : void {
     this.getConfirmation.emit(false);

@@ -63,7 +63,6 @@
             </div>
         </form>
     </div>
-
     @if(this.showDialogResult()) {
         <div class="container p-1 float-start">
             <div class="row mt-1">
@@ -73,9 +72,7 @@
             </div>
         </div>
     }
-
     @if(this.isDialogVisible()) {
-        <app-bootstrap-dialog [dialog]="this.dialogData" (getConfirmation)="this.callback($event)"></app-bootstrap-dialog>
+        <app-bootstrap-dialog [dialog]="this.dialogData()" (getConfirmation)="this.callback($event)"></app-bootstrap-dialog>
     }
-
 </div>
