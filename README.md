@@ -42,12 +42,8 @@ _June 2025_
 
 \- Suppressing deprecation warnings of _Bootstrap_ in _angular.json_ with the code:
 
- `"stylePreprocessorOptions": {`
-
- `"sass": {`
-
- `"silenceDeprecations": ["mixed-decls", "color-functions", "global-builtin", "import"]`
-
- `}`
-
- `},`
+`"stylePreprocessorOptions": {`  
+ `"sass": {`  
+ `"silenceDeprecations": ["mixed-decls", "color-functions", "global-builtin", "import"]`  
+ `}`  
+`},`
